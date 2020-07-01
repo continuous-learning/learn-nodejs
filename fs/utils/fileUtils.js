@@ -1,4 +1,5 @@
 const fs = require('fs')
+const { resolve } = require('path')
 
 module.exports = {
   /**
@@ -250,6 +251,66 @@ module.exports = {
     return new Promise((resolve, reject) => {
       try {
         fs.close(fd, (error) => {
+          if (error) {
+            reject(error)
+          }
+          resolve('success')
+        })
+      } catch (error) {
+        reject(error)
+      }
+    })
+  }
+  /**
+   * 创建一个文件夹
+   * @author blacklisten
+   * @date 2020-07-01
+   * @returns {any}
+   */
+  mkdir({ path }) {
+    return new Promise((resolve, reject) => {
+      try {
+        fs.mkdir(path, (error) => {
+          if (error) {
+            reject(error)
+          }
+          resolve('success')
+        })
+      } catch (error) {
+        reject(error)
+      }
+    })
+  },
+  /**
+   * 删除一个文件夹
+   * @author blacklisten
+   * @date 2020-07-01
+   * @returns {any}
+   */
+  rmdir({ path }) {
+    return new Promise((resolve, reject) => {
+      try {
+        fs.rmdir(path, (error) => {
+          if (error) {
+            reject(error)
+          }
+          resolve('success')
+        })
+      } catch (error) {
+        reject(error)
+      }
+    })
+  },
+  /**
+   * 读取一个文件夹
+   * @author blacklisten
+   * @date 2020-07-01
+   * @returns {any}
+   */
+  readdir({ path }) {
+    return new Promise((resolve, reject) => {
+      try {
+        fs.readdir(path, (error) => {
           if (error) {
             reject(error)
           }

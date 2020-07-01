@@ -75,5 +75,113 @@ module.exports = {
         reject(error)
       }
     })
+  },
+  /**
+   * 异步追加文件
+   * @author blacklisten
+   * @date 2020-07-01
+   * @returns {any}
+   */
+  appendFile({ filePath, data, options = {} }) {
+    return new Promise((resolve, reject) => {
+      try {
+        fs.appendFile(filePath, data, options, (error) => {
+          if (error) {
+            reject(error)
+          }
+          resolve('success')
+        })
+      } catch (error) {
+        reject(error)
+      }
+    })
+  },
+  /**
+   * 同步追加文件
+   * @author blacklisten
+   * @date 2020-07-01
+   * @returns {any}
+   */
+  appendFileSync({ filePath, data, options = {} }) {
+    return new Promise((resolve, reject) => {
+      try {
+        fs.appendFileSync(filePath, data, options)
+        resolve('success')
+      } catch (error) {
+        reject('error')
+      }
+    })
+  },
+  /**
+   * 同步复制文件
+   * @author blacklisten
+   * @date 2020-07-01
+   * @returns {any}
+   */
+  copyFile({ sourceFile, targetFile }) {
+    return new Promise((resolve, reject) => {
+      try {
+        fs.copyFile(sourceFile, targetFile, (error) => {
+          if (error) {
+            reject(error)
+          }
+          resolve('success')
+        })
+      } catch (error) {
+        reject(error)
+      }
+    })
+  },
+  /**
+   * 异步复制文件
+   * @author blacklisten
+   * @date 2020-07-01
+   * @returns {any}
+   */
+  copyFileSync({ sourceFile, targetFile }) {
+    return new Promise((resolve, reject) => {
+      try {
+        fs.copyFileSync(sourceFile, targetFile)
+        resolve('success')
+      } catch (error) {
+        reject(error)
+      }
+    })
+  },
+  /**
+   * 同步删除文件
+   * @author blacklisten
+   * @date 2020-07-01
+   * @returns {any}
+   */
+  unlink({ filePath }) {
+    return new Promise((resolve, reject) => {
+      try {
+        fs.unlink(filePath, (error) => {
+          if (error) {
+            reject(error)
+          }
+          resolve('success')
+        })
+      } catch (error) {
+        reject(error)
+      }
+    })
+  },
+  /**
+   * 异步删除文件
+   * @author blacklisten
+   * @date 2020-07-01
+   * @returns {any}
+   */
+  unlinkSync({ filePath }) {
+    return new Promise((resolve, reject) => {
+      try {
+        fs.unlinkSync(filePath)
+        resolve('success')
+      } catch (error) {
+        reject(error)
+      }
+    })
   }
 }

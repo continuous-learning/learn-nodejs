@@ -13,5 +13,3 @@ const readFileFun = async () => {
 const writeFileFun = async () => {
   const result = await writeFile({ filePath: writeFilePath, data: '测试写入', options: { flag: 'a' } })
 }
-
-
